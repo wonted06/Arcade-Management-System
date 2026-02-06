@@ -116,6 +116,37 @@ NEW_CUSTOMER,P54578,Jacob Peraltera,STUDENT,10,32
 
 ---
 
+## Tech Stack
+- **Java** – core programming language
+- **Object-Oriented Design** – abstraction, inheritance, polymorphism
+- **Java Standard Library** – file I/O, collections
+
+---
+
+## Project Structure
+| File | Description |
+|-----|------------|
+| `ArcadeGame.java` | Abstract base class for all arcade games |
+| `CabinetGame.java` | Standard arcade cabinet game |
+| `ActiveGame.java` | Age-restricted physical arcade game |
+| `VirtualRealityGame.java` | VR game with equipment requirements |
+| `Arcade.java` | Core system manager for games and customers |
+| `Customer.java` | Represents arcade customers and discounts |
+| `Simulation.java` | Program entry point and execution controller |
+| `CustomerParser.java` | Loads and validates customer data |
+| `GameParser.java` | Loads and validates game data |
+| `TransactionParser.java` | Processes transaction files |
+| `AgeLimitException.java` | Thrown when age rules are violated |
+| `InsufficientBalanceException.java` | Thrown when balance is insufficient |
+| `InvalidCustomerException.java` | Invalid customer ID handling |
+| `InvalidGameIdException.java` | Invalid game ID handling |
+| `customers.txt` | Customer input data |
+| `games.txt` | Game input data |
+| `transactions.txt` | Transaction input data |
+| `README.md` | Project documentation |
+
+---
+
 ## How to Run
 
 1. Ensure all `.java` and `.txt` files are in the same project directory
