@@ -1,58 +1,73 @@
-# Arcade Games Simulation (Java)
+# Arcade Games Simulation System  
+*A Java-Based Object-Oriented Simulation Project*
 
-## Overview
-This project is a Java-based arcade simulation that models an arcade system with games, customers, and transactions.  
-The program reads data from text files, constructs the arcade environment, and simulates customer interactions such as playing games, adding funds, and registering new customers.
-
-The project demonstrates object-oriented programming concepts including:
-- Inheritance and polymorphism
-- Abstract classes
-- Encapsulation
-- Exception handling
-- File I/O
-- Basic data processing and analysis
+![Java](https://img.shields.io/badge/Java-OOP-orange)
+![Status](https://img.shields.io/badge/Status-Complete-success)
+![Paradigm](https://img.shields.io/badge/Paradigm-Object--Oriented-blue)
 
 ---
 
-## Features
-- Supports multiple game types:
-  - Cabinet games
-  - Active games (with age restrictions)
-  - Virtual reality games (with equipment requirements)
-- Manages customers with different discount types (e.g. staff, student)
-- Processes transactions from a file:
-  - Playing games (peak and off-peak pricing)
+## Overview
+
+This project is a **Java-based arcade simulation system** that models the core operations of a modern arcade, including **games, customers, and transactions**.  
+The application reads structured data from text files, constructs an in-memory arcade environment, and simulates real customer interactions such as playing games, adding funds, and registering new customers.
+
+The project focuses heavily on **object-oriented design**, clean architecture, and robust error handling, reflecting how a real-world simulation or backend system might be structured.
+
+---
+
+## Key Features
+
+- Supports multiple **arcade game types** with shared and specialised behaviour
+- Simulates **customer transactions** via input files
+- Enforces business rules using **custom exceptions**
+- Applies **peak and off-peak pricing**
+- Performs **basic analytics** on arcade data
+- Fully modular and extensible design
+
+---
+
+## Core Functionality
+
+The simulation supports the following operations:
+
+- Loading arcade games and customers from files
+- Processing transactions:
+  - Playing games
   - Adding funds
   - Registering new customers
-- Enforces rules using custom exceptions:
-  - Age limits
-  - Insufficient balance
-  - Invalid customer or game IDs
-- Calculates arcade statistics such as:
+- Applying customer discounts (e.g. staff, student)
+- Enforcing:
+  - Minimum age restrictions
+  - Sufficient balance checks
+  - Valid customer and game identifiers
+- Producing summary statistics such as:
   - Richest customer
   - Median game price
 
+All invalid or rule-breaking actions are handled gracefully using **custom exceptions**, ensuring the program never crashes due to bad input.
+
 ---
 
-## Project Structure
+## Object-Oriented Design
+
+### Game Hierarchy
+- `ArcadeGame` (abstract base class)
+  - `CabinetGame`
+  - `ActiveGame` (age-restricted)
+  - `VirtualRealityGame` (equipment requirements)
 
 ### Core Classes
-- `ArcadeGame` (abstract)
-- `CabinetGame`
-- `ActiveGame`
-- `VirtualRealityGame`
-- `Arcade`
-- `Customer`
+- `Arcade` – central manager for games, customers, and transactions
+- `Customer` – represents arcade users and handles balance & discounts
+- `Simulation` – program entry point and execution controller
 
 ### Parsers
-- `CustomerParser` – reads customer data from file
-- `GameParser` – reads game data from file
+- `CustomerParser` – loads customer data
+- `GameParser` – loads game data
 - `TransactionParser` – processes transactions
 
-### Simulation
-- `Simulation` – contains the `main` method and runs the program
-
-### Exceptions
+### Custom Exceptions
 - `AgeLimitException`
 - `InsufficientBalanceException`
 - `InvalidCustomerException`
@@ -63,20 +78,20 @@ The project demonstrates object-oriented programming concepts including:
 ## Input Files
 
 ### `customers.txt`
-Each line represents a customer using `#` as a delimiter.
+Stores customer data using `#` as a delimiter.
 
-**Format:**
+**Format**
 ID#Name#Balance#Age[#STAFF or #STUDENT]
 
-**Example:**
+**Example**
 748A66#Lucille Swan#800#31#STAFF
 
 ---
 
 ### `games.txt`
-Each line represents a game using `@` as a delimiter.
+Stores arcade game data using `@` as a delimiter.
 
-**Format varies by game type**, but includes:
+Each entry includes:
 - Game ID
 - Game name
 - Game type (`cabinet`, `active`, `virtualReality`)
@@ -87,14 +102,14 @@ Each line represents a game using `@` as a delimiter.
 ---
 
 ### `transactions.txt`
-Each line represents a transaction.
+Defines the actions performed during the simulation.
 
-**Supported transactions:**
+**Supported transactions**
 - `PLAY`
 - `ADD_FUNDS`
 - `NEW_CUSTOMER`
 
-**Examples:**
+**Examples**
 PLAY,A64248,AHW0HK1F03,OFF_PEAK
 ADD_FUNDS,174450,1000
 NEW_CUSTOMER,P54578,Jacob Peraltera,STUDENT,10,32
@@ -103,26 +118,55 @@ NEW_CUSTOMER,P54578,Jacob Peraltera,STUDENT,10,32
 
 ## How to Run
 
-1. Ensure all `.java` files and `.txt` files are in the same project directory
+1. Ensure all `.java` and `.txt` files are in the same project directory
 2. Compile the project:
-javac *.java
+   ```bash
+   javac *.java
 3. Run the simulation:
-java Simulation
+   ```bash
+   java Simulation
+
 The program will:
-- Load customers and games from files
-- Process all transactions
-- Output results and any error messages to the console
+	•	Load all customers and games
+	•	Process every transaction in sequence
+	•	Output results, summaries, and error messages to the console
 
----
+⸻
 
-## Assumptions
-- Input files are correctly formatted
-- Game IDs and customer IDs are unique
-- Peak and off-peak pricing rules are handled internally
-- Invalid transactions do not crash the program; they are handled via exceptions
+## Assumptions & Design Decisions
+	•	Input files are correctly formatted
+	•	Customer IDs and game IDs are unique
+	•	Pricing rules are handled internally by the game classes
+	•	Invalid transactions do not terminate the program
+	•	The system prioritises robustness and clarity over UI
 
----
+⸻
+
+## Skills Demonstrated
+	•	Object-oriented programming (inheritance, polymorphism, abstraction)
+	•	Java exception handling
+	•	File I/O and parsing
+	•	Modular system design
+	•	Data validation and rule enforcement
+	•	Basic analytical computations
+
+⸻
+
+## Academic Context
+
+This project was developed as part of a University coursework assignment to demonstrate strong understanding of Java and object-oriented programming principles.
+While academic in origin, the architecture mirrors patterns used in real-world simulation and backend systems.
+
+⸻
+
+## License
+
+This project is shared for educational and portfolio purposes only.
+Please do not submit this work (or derivatives) as your own for academic assessment.
+
+⸻
 
 ## Author
+
 Kurt Canillas
-Created as part of a University coursework project for learning Java and object-oriented programming concepts.
+Computer Science Undergraduate
